@@ -45,6 +45,7 @@ public class ReservationController {
 	@PutMapping("/updateReservation/{idR}")
 	public Reservation updateReservation (@PathVariable long idR ,@RequestBody Reservation reservation) {
 		Reservation reservationAModifier = reservationService.findReservation(idR);
+		reservationAModifier.setIdR(reservation.getIdR());
 		reservationAModifier.setDateR(reservation.getDateR());
 		reservationAModifier.setHeureR(reservation.getHeureR());
 		reservationAModifier.setNbrePersonne(reservation.getNbrePersonne());

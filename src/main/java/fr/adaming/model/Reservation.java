@@ -1,22 +1,23 @@
 package fr.adaming.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 @Entity
 public class Reservation {
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.AUTO)
 private long idR;
-@Temporal (TemporalType.DATE)
-private Date dateR;
-@Temporal(TemporalType.TIME)
-private Date heureR;
+private LocalDate dateR;
+
+private LocalTime heureR;
 private int nbrePersonne;
 
 @ManyToOne
@@ -31,16 +32,17 @@ public long getIdR() {
 public void setIdR(long idR) {
 	this.idR = idR;
 }
-public Date getDateR() {
+
+public LocalDate getDateR() {
 	return dateR;
 }
-public void setDateR(Date dateR) {
+public void setDateR(LocalDate dateR) {
 	this.dateR = dateR;
 }
-public Date getHeureR() {
+public LocalTime getHeureR() {
 	return heureR;
 }
-public void setHeureR(Date heureR) {
+public void setHeureR(LocalTime heureR) {
 	this.heureR = heureR;
 }
 public int getNbrePersonne() {
@@ -67,7 +69,8 @@ public Utilisateur getUtilisateurManager() {
 public void setUtilisateurManager(Utilisateur utilisateurManager) {
 	this.utilisateurManager = utilisateurManager;
 }
-public Reservation(Date dateR, Date heureR, int nbrePersonne, Utilisateur client, Utilisateur serveur,
+
+public Reservation(LocalDate dateR, LocalTime heureR, int nbrePersonne, Utilisateur client, Utilisateur serveur,
 		Utilisateur utilisateurManager) {
 	super();
 	this.dateR = dateR;

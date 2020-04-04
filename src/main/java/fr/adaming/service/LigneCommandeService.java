@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.repository.ILigneCommandeRepository;
 @Service
@@ -45,6 +46,14 @@ ILigneCommandeRepository lCRepository;
 	public LigneCommande createLC(LigneCommande lC) {
 		// TODO Auto-generated method stub
 		return lCRepository.save(lC);
+	}
+
+
+
+	@Override
+	public List<LigneCommande> findByCommande(Commande commande) {
+		// TODO Auto-generated method stub
+		return lCRepository.findByCommande(commande);
 	}
 
 }
